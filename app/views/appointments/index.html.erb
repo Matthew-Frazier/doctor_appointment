@@ -1,2 +1,9 @@
-<h1>Appointments#index</h1>
-<p>Find me in app/views/appointments/index.html.erb</p>
+<h1>Doctor's Appointments</h1>
+<hr>
+<%= link_to "Add Appointment", new_doctor_appointment_path(@doctor), class: "btn" %>
+<hr>
+<% @appointments.each do |a| %>
+  <%= a.user_id %>
+  <%= link_to "Appointment Info", doctor_appointment_path(@doctor, a)  %>
+  <hr>
+<% end %>

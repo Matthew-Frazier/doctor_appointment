@@ -1,2 +1,15 @@
-<h1>Doctors#index</h1>
-<p>Find me in app/views/doctors/index.html.erb</p>
+<h1>Doctors</h1>
+<hr>
+<%= link_to "Add A Doctor", new_doctor_path %>
+<hr>
+<% @doctors.each do |d| %>
+  <%= d.full_name %>
+  <br>
+  <%= link_to "View Doctor Appointments", doctor_appointments_path(d), class: "btn" %>
+  <br>
+  <%= link_to "Edit Doctor Info", edit_doctor_path(d), class: "btn" %>
+  <br>
+  <%= link_to "Delete Doctor", doctor_path(d), method: :delete, class: "btn" %>
+  <hr>
+<% end %>
+

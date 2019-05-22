@@ -1,7 +1,6 @@
 class AppointmentsController < ApplicationController
   before_action :set_doctor
   before_action :set_appointment, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
  
 
   def index
@@ -48,15 +47,10 @@ class AppointmentsController < ApplicationController
     end
 
     def set_appointment
-      @appointment = @doctor.appointment.find(params[:id])
+      @appointment = @doctor.appointments.find(params[:id])
     end
 
     def appointment_params
       params.require(:appointment).permit(:appointment_date, :appointment_time, :user_id)
-    end
-
-    protected
-    def configure_permitted_parameters
-      devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name])
     end
 end
